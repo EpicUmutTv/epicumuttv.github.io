@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EpicUmutTv Official</title>
-    <!-- Google Fonts üzerinden modern ve temiz bir yazı tipi -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Sosyal medya ikonları için FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -237,6 +235,14 @@
             box-shadow: 0 0 15px rgba(132, 79, 226, 0.5);
         }
 
+        /* YENİ KATEGORİ: MAVİ METİN STİLİ */
+        .blue-notice {
+            color: #3baeff;
+            text-shadow: 0 0 8px rgba(59, 174, 255, 0.4);
+            font-weight: 600;
+            text-align: center;
+        }
+
         /* 1. KATEGORİ: YOUTUBE FOTOĞRAF YERLERİ */
         .photo-grid {
             display: grid;
@@ -282,7 +288,7 @@
         .social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: #fff; }
         .social-link.roblox:hover { background: #000000; border-color: #ef4444; }
 
-        /* Kaydırma Çubuğu Tasarımı (Gözü yormayan ince mor) */
+        /* Kaydırma Çubuğu Tasarımı */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
         ::-webkit-scrollbar-thumb { background: rgba(186, 143, 255, 0.3); border-radius: 10px; }
@@ -298,20 +304,17 @@
 </head>
 <body>
 
-    <!-- Sitenin Yapımcısı Alanı -->
     <div class="creator-credits">
         Sitenin yapımcısı <strong>EpicUmutTv</strong>'dir.<br>
         The creator of the site is <strong>EpicUmutTv</strong>.
     </div>
 
-    <!-- Sağ Üst Üç Çizgi Menü Butonu -->
     <div class="burger-menu" onclick="toggleMenu()">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
 
-    <!-- Boş Bırakılan Ana Düzen Panelleri (İleride ayarlanacak) -->
     <div class="main-layout">
         <div class="left-panel">
             <span>[Sol Kısım - İleride Ayarlanacak]</span>
@@ -321,10 +324,17 @@
         </div>
     </div>
 
-    <!-- Sağdan Açılan Kategori Sistemi -->
     <div class="side-navigation" id="sideNav">
         
-        <!-- 1. KATEGORİ -->
+        <div class="menu-item" onclick="toggleTab('guncellemeTab')">
+            Güncellemeler <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="content-tab" id="guncellemeTab">
+            <p class="blue-notice">
+                Sitemiz Moderasyon Ekibimiz Tarafından 7/24 Aktif Bakım altındadır! Ve sık sık sitemiz güncellenecektir!
+            </p>
+        </div>
+
         <div class="menu-item" onclick="toggleTab('kanalTab')">
             EpicUmutTv Kanalı <i class="fas fa-chevron-down"></i>
         </div>
@@ -344,7 +354,6 @@
             </a>
         </div>
 
-        <!-- 2. KATEGORİ -->
         <div class="menu-item" onclick="toggleTab('magazaTab')">
             EpicUmutTv Mağazası Roblox <i class="fas fa-chevron-down"></i>
         </div>
@@ -360,7 +369,6 @@
             </a>
         </div>
 
-        <!-- 3. KATEGORİ -->
         <div class="menu-item" onclick="toggleTab('sosyalTab')">
             EpicUmutTv Sosyal Medyaları <i class="fas fa-chevron-down"></i>
         </div>
@@ -381,7 +389,6 @@
             </div>
         </div>
 
-        <!-- 4. KATEGORİ -->
         <div class="menu-item" onclick="toggleTab('sozlesmeTab')">
             EpicUmutTv Sözleşmeleri <i class="fas fa-chevron-down"></i>
         </div>
@@ -391,25 +398,20 @@
             </p>
         </div>
 
-        <!-- GELECEK SEKMESİ -->
         <div class="menu-item coming-soon">
             Ve Devamı yakında... <i class="fas fa-lock"></i>
         </div>
 
     </div>
 
-    <!-- Ortam Ses Kontrolü Buttonu -->
     <div class="audio-control" onclick="toggleAudio()">
         <i class="fas fa-volume-mute" id="audioIcon"></i> <span id="audioText">Müzik Çal</span>
     </div>
 
-    <!-- Arkaplan Huzurlu Ortam Sesi Örneği (Telif hakkı olmayan lo-fi döngü) -->
-    <audio id="ambientMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="ambientMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
 
-    <!-- Sağ Alttaki Sürüm Bilgisi -->
-    <div class="version-tag">v1.0.0</div>
+    <div class="version-tag">v1.1.0</div>
 
-    <!-- FONKSİYONLARIN KONTROLÜ (JAVASCRIPT) -->
     <script>
         // Sağ üstteki üç çizgi menüyü açıp kapatır
         function toggleMenu() {
@@ -419,7 +421,7 @@
             burger.classList.toggle('open');
         }
 
-        // Tıklanan kategorinin içeriğini aşağı doğru pürüzsüzce açar/kapatır
+        // Tıklanan kategorinin içeriğini aşağı doğru açar/kapatır
         function toggleTab(tabId) {
             const currentTab = document.getElementById(tabId);
             const allTabs = document.querySelectorAll('.content-tab');
@@ -437,7 +439,7 @@
             }
         }
 
-        // Huzurlu ortam sesi oynatıcı mekanizması
+        // Müzik oynatıcı mekanizması
         const music = document.getElementById('ambientMusic');
         const audioIcon = document.getElementById('audioIcon');
         const audioText = document.getElementById('audioText');
@@ -445,7 +447,7 @@
         function toggleAudio() {
             if (music.paused) {
                 music.play();
-                music.volume = 0.2; // Sesi kulak tırmalamayacak şekilde hafif ayarlar
+                music.volume = 0.15; // Arka plan sesi için kulak yormayacak hafif seviye
                 audioIcon.className = "fas fa-volume-up";
                 audioText.innerText = "Müziği Sustur";
             } else {

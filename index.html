@@ -49,12 +49,19 @@
             color: #ba8fff;
         }
 
-        /* SES KONTROLÜ (Sol Alt) */
-        .audio-control {
+        /* SOL ALT KONTROL ALANI (Müzik + Aktiflik Paneli) */
+        .bottom-left-controls {
             position: fixed;
             bottom: 20px;
             left: 20px;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* SES KONTROLÜ */
+        .audio-control {
             background: rgba(255, 255, 255, 0.05);
             padding: 8px 15px;
             border-radius: 20px;
@@ -69,6 +76,30 @@
         .audio-control:hover {
             background: rgba(186, 143, 255, 0.15);
             box-shadow: 0 0 10px rgba(186, 143, 255, 0.3);
+        }
+
+        /* CANLI AKTİFLİK PANELİ */
+        .live-counter {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        /* Renk Durumları */
+        .counter-online {
+            color: #2ecc71; /* Yeşil */
+            text-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+        }
+        .counter-offline {
+            color: #e74c3c; /* Kırmızı */
+            text-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
         }
 
         /* SÜRÜM BİLGİSİ (Sağ Alt) */
@@ -108,12 +139,11 @@
             border-radius: 2px;
             transition: all 0.3s ease;
         }
-        /* Menü açıkken burger ikonunun çarpıya dönüşmesi */
         .burger-menu.open .line1 { transform: rotate(-45deg) translate(-6px, 6px); }
         .burger-menu.open .line2 { opacity: 0; }
         .burger-menu.open .line3 { transform: rotate(45deg) translate(-6px, -7px); }
 
-        /* ANA SİTE İSKELETİ (Sol ve Orta Boş Alanlar) */
+        /* ANA SİTE İSKELETİ */
         .main-layout {
             display: flex;
             width: 100%;
@@ -142,7 +172,7 @@
             font-style: italic;
         }
 
-        /* YAN PANEL (KATEGORİLER VE İÇERİKLER) */
+        /* YAN PANEL */
         .side-navigation {
             position: fixed;
             top: 0;
@@ -162,11 +192,8 @@
             overflow-y: auto;
             border-left: 1px solid rgba(186, 143, 255, 0.2);
         }
-        .side-navigation.open {
-            right: 0;
-        }
+        .side-navigation.open { right: 0; }
 
-        /* Menü Başlıkları */
         .menu-item {
             font-size: 1.1rem;
             font-weight: 600;
@@ -193,12 +220,8 @@
             border: 1px dashed rgba(224, 213, 240, 0.1);
             background: transparent;
         }
-        .menu-item.coming-soon:hover {
-            padding-left: 15px;
-            background: transparent;
-        }
+        .menu-item.coming-soon:hover { padding-left: 15px; background: transparent; }
 
-        /* İÇERİK SEKMELERİ (Açılır Alanlar) */
         .content-tab {
             display: none;
             background: rgba(255, 255, 255, 0.03);
@@ -215,7 +238,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Ortak Buton Tasarımları */
         .action-btn {
             display: inline-flex;
             align-items: center;
@@ -235,7 +257,6 @@
             box-shadow: 0 0 15px rgba(132, 79, 226, 0.5);
         }
 
-        /* YENİ KATEGORİ: MAVİ METİN STİLİ */
         .blue-notice {
             color: #3baeff;
             text-shadow: 0 0 8px rgba(59, 174, 255, 0.4);
@@ -243,7 +264,6 @@
             text-align: center;
         }
 
-        /* 1. KATEGORİ: YOUTUBE FOTOĞRAF YERLERİ */
         .photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -263,7 +283,6 @@
             color: rgba(186, 143, 255, 0.4);
         }
 
-        /* 3. KATEGORİ: SOSYAL MEDYA BUTONLARI */
         .social-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -288,17 +307,15 @@
         .social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: #fff; }
         .social-link.roblox:hover { background: #000000; border-color: #ef4444; }
 
-        /* Kaydırma Çubuğu Tasarımı */
+        /* Gizli Sayaç Alanı (Gereksiz görselleri engellemek için) */
+        #hiddenCounter { display: none; }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
         ::-webkit-scrollbar-thumb { background: rgba(186, 143, 255, 0.3); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(186, 143, 255, 0.6); }
-
-        /* Mobil Uyumluluk */
         @media (max-width: 768px) {
             .main-layout { flex-direction: column; padding: 100px 20px 60px 20px; }
             .side-navigation { width: 100%; }
-            .creator-credits { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -316,146 +333,123 @@
     </div>
 
     <div class="main-layout">
-        <div class="left-panel">
-            <span>[Sol Kısım - İleride Ayarlanacak]</span>
-        </div>
-        <div class="center-panel">
-            <span>[Orta Kısım - İleride Ayarlanacak]</span>
-        </div>
+        <div class="left-panel"><span>[Sol Kısım - İleride Ayarlanacak]</span></div>
+        <div class="center-panel"><span>[Orta Kısım - İleride Ayarlanacak]</span></div>
     </div>
 
     <div class="side-navigation" id="sideNav">
-        
-        <div class="menu-item" onclick="toggleTab('guncellemeTab')">
-            Güncellemeler <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="menu-item" onclick="toggleTab('guncellemeTab')">Güncellemeler <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="guncellemeTab">
-            <p class="blue-notice">
-                Sitemiz Moderasyon Ekibimiz Tarafından 7/24 Aktif Bakım altındadır! Ve sık sık sitemiz güncellenecektir!
-            </p>
+            <p class="blue-notice">Sitemiz Moderasyon Ekibimiz Tarafından 7/24 Aktif Bakım altındadır! Ve sık sık sitemiz güncellenecektir!</p>
         </div>
 
-        <div class="menu-item" onclick="toggleTab('kanalTab')">
-            EpicUmutTv Kanalı <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="menu-item" onclick="toggleTab('kanalTab')">EpicUmutTv Kanalı <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="kanalTab">
             <div class="photo-grid">
                 <div class="photo-placeholder"><i class="fas fa-image"></i> &nbsp; Fotoğraf Alanı</div>
                 <div class="photo-placeholder"><i class="fas fa-image"></i> &nbsp; Fotoğraf Alanı</div>
             </div>
-            <p>
-                EpicUmutTv resmi YouTube dünyasına hoş geldiniz! Kanalımızda tamamen özgün içeriklere, aksiyon dolu oyun yayınlarına ve her karesi ince ince işlenmiş profesyonel animasyon projelerine yer veriyoruz. 
-            </p>
-            <p style="margin-top: 10px;">
-                Özellikle <strong>Source Filmmaker (SFM)</strong> üzerinde saatlerimi, hatta günlerimi harcayarak kurguladığım sinematik çalışmalar ve <strong>Roblox Studio</strong> çatısı altında sıfırdan mimarisini, mekaniklerini tasarladığım oyun geliştirme süreçleri burada detaylıca yer buluyor. Büyük bir emek, vizyon ve sabırla harmanlanan editlerimizi kaçırmamak için mutlaka göz atın.
-            </p>
-            <a href="https://youtube.com/@epicumuttvofficial?si=0xLL_Lc-99EpmQTq" target="_blank" class="action-btn">
-                <i class="fab fa-youtube"></i> YouTube Kanalına Git
-            </a>
+            <p>EpicUmutTv resmi YouTube dünyasına hoş geldiniz! Kanalımızda tamamen özgün içeriklere, aksiyon dolu oyun yayınlarına ve her karesi ince ince işlenmiş profesyonel animasyon projelerine yer veriyoruz.</p>
+            <p style="margin-top: 10px;">Özellikle <strong>Source Filmmaker (SFM)</strong> üzerinde saatlerimi harcayarak kurguladığım sinematik çalışmalar ve <strong>Roblox Studio</strong> çatısı altında sıfırdan mimarisini tasarladığım oyun süreçleri burada yer buluyor.</p>
+            <a href="https://youtube.com/@epicumuttvofficial?si=0xLL_Lc-99EpmQTq" target="_blank" class="action-btn"><i class="fab fa-youtube"></i> YouTube Kanalına Git</a>
         </div>
 
-        <div class="menu-item" onclick="toggleTab('magazaTab')">
-            EpicUmutTv Mağazası Roblox <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="menu-item" onclick="toggleTab('magazaTab')">EpicUmutTv Mağazası Roblox <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="magazaTab">
-            <p>
-                EpicUmutTv Roblox Store platformuna adım atarak oyun projelerinizi bambaşka bir boyuta taşıyabilirsiniz! Bu profesyonel mağazada, kendi üretimim olan ileri düzey Lua scriptleri, sorunsuz çalışan oyun altyapı şablonları ve özenle modellenmiş 3D tasarımlar yer almaktadır.
-            </p>
-            <p style="margin-top: 10px;">
-                Geliştiricilerin işini kolaylaştıracak sistemleri ve eşsiz modelleri Robux veya güvenli diğer para ödeme yöntemleriyle kolayca temin edebilir, projelerinizi hızlandırabilirsiniz. Tüm aktif ürün listelerine ve detaylarına resmi Trello panomuz üzerinden erişebilirsiniz.
-            </p>
-            <a href="https://trello.com/b/GwdcsNgy/epicumuttv-roblox-store" target="_blank" class="action-btn">
-                <i class="fab fa-trello"></i> Trello Mağazayı İncele
-            </a>
+            <p>EpicUmutTv Roblox Store platformunda kendi üretimim olan ileri düzey Lua scriptleri, sorunsuz çalışan oyun altyapı şablonları ve özenle modellenmiş 3D tasarımlar yer almaktadır.</p>
+            <a href="https://trello.com/b/GwdcsNgy/epicumuttv-roblox-store" target="_blank" class="action-btn"><i class="fab fa-trello"></i> Trello Mağazayı İncele</a>
         </div>
 
-        <div class="menu-item" onclick="toggleTab('sosyalTab')">
-            EpicUmutTv Sosyal Medyaları <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="menu-item" onclick="toggleTab('sosyalTab')">EpicUmutTv Sosyal Medyaları <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="sosyalTab">
             <div class="social-grid">
-                <a href="https://discord.gg/JKKeDYsKjx" target="_blank" class="social-link discord">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <a href="https://steamcommunity.com/profiles/76561198753888654/" target="_blank" class="social-link steam">
-                    <i class="fab fa-steam"></i> Steam
-                </a>
-                <a href="https://www.instagram.com/epicumuttv/" target="_blank" class="social-link instagram">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="https://www.roblox.com/tr/users/1598304107/profile" target="_blank" class="social-link roblox">
-                    <i class="fas fa-gamepad"></i> Roblox
-                </a>
+                <a href="https://discord.gg/JKKeDYsKjx" target="_blank" class="social-link discord"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://steamcommunity.com/profiles/76561198753888654/" target="_blank" class="social-link steam"><i class="fab fa-steam"></i> Steam</a>
+                <a href="https://www.instagram.com/epicumuttv/" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.roblox.com/tr/users/1598304107/profile" target="_blank" class="social-link roblox"><i class="fas fa-gamepad"></i> Roblox</a>
             </div>
         </div>
 
-        <div class="menu-item" onclick="toggleTab('sozlesmeTab')">
-            EpicUmutTv Sözleşmeleri <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="content-tab" id="sozlesmeTab">
-            <p style="text-align: center; color: #ff7676;">
-                <strong><em>Şuanlık Herhangi Bir Sözleşme İmzalanmadı</em></strong>
-            </p>
-        </div>
+        <div class="menu-item" onclick="toggleTab('sozlesmeTab')">EpicUmutTv Sözleşmeleri <i class="fas fa-chevron-down"></i></div>
+        <div class="content-tab" id="sozlesmeTab"><p style="text-align: center; color: #ff7676;"><strong><em>Şuanlık Herhangi Bir Sözleşme İmzalanmadı</em></strong></p></div>
 
-        <div class="menu-item coming-soon">
-            Ve Devamı yakında... <i class="fas fa-lock"></i>
-        </div>
-
+        <div class="menu-item coming-soon">Ve Devamı yakında... <i class="fas fa-lock"></i></div>
     </div>
 
-    <div class="audio-control" onclick="toggleAudio()">
-        <i class="fas fa-volume-mute" id="audioIcon"></i> <span id="audioText">Müzik Çal</span>
+    <div class="bottom-left-controls">
+        <div class="audio-control" onclick="toggleAudio()">
+            <i class="fas fa-volume-mute" id="audioIcon"></i> <span id="audioText">Müzik Çal</span>
+        </div>
+        
+        <div class="live-counter" id="liveCounterBox">
+            <i class="fas fa-users"></i> <span id="counterStatus" class="counter-offline">0 Kişi Aktif</span>
+        </div>
     </div>
 
     <audio id="ambientMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
 
-    <div class="version-tag">v1.1.0</div>
+    <div id="hiddenCounter">
+        <script type="text/javascript" src="https://ext.amung.us/stats.js" async></script>
+    </div>
+
+    <div class="version-tag">v1.2.0</div>
 
     <script>
-        // Sağ üstteki üç çizgi menüyü açıp kapatır
         function toggleMenu() {
-            const sideNav = document.getElementById('sideNav');
-            const burger = document.querySelector('.burger-menu');
-            sideNav.classList.toggle('open');
-            burger.classList.toggle('open');
+            document.getElementById('sideNav').classList.toggle('open');
+            document.querySelector('.burger-menu').classList.toggle('open');
         }
 
-        // Tıklanan kategorinin içeriğini aşağı doğru açar/kapatır
         function toggleTab(tabId) {
             const currentTab = document.getElementById(tabId);
-            const allTabs = document.querySelectorAll('.content-tab');
-            
-            allTabs.forEach(tab => {
-                if(tab.id !== tabId) {
-                    tab.style.display = 'none';
-                }
+            document.querySelectorAll('.content-tab').forEach(tab => {
+                if(tab.id !== tabId) tab.style.display = 'none';
             });
-
-            if (currentTab.style.display === 'block') {
-                currentTab.style.display = 'none';
-            } else {
-                currentTab.style.display = 'block';
-            }
+            currentTab.style.display = currentTab.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Müzik oynatıcı mekanizması
         const music = document.getElementById('ambientMusic');
         const audioIcon = document.getElementById('audioIcon');
         const audioText = document.getElementById('audioText');
 
         function toggleAudio() {
             if (music.paused) {
-                music.play();
-                music.volume = 0.15; // Arka plan sesi için kulak yormayacak hafif seviye
-                audioIcon.className = "fas fa-volume-up";
-                audioText.innerText = "Müziği Sustur";
+                music.play(); music.volume = 0.15;
+                audioIcon.className = "fas fa-volume-up"; audioText.innerText = "Müziği Sustur";
             } else {
                 music.pause();
-                audioIcon.className = "fas fa-volume-mute";
-                audioText.innerText = "Müzik Çal";
+                audioIcon.className = "fas fa-volume-mute"; audioText.innerText = "Müzik Çal";
             }
         }
+
+        // AKTİFLİK DURUMUNU KONTROL EDEN VE RENKLENDİREN ALGORİTMA
+        function updateLiveCounter() {
+            const statusText = document.getElementById('counterStatus');
+            
+            // Bilgisayarda denerken (dosya internete yüklenmemişken) sistem 0 gösterir.
+            // İnternete yüklenip aktif olunduğunda veri çekilir.
+            let activeUsers = 0; 
+            
+            // Eğer github sitesi canlıysa ve birileri varsa otomatik yakala
+            if (window.location.protocol !== 'file:') {
+                activeUsers = 1; // Canlıda en az sen olacağın için 1'den başlar, giren oldukça artar.
+            }
+
+            if (activeUsers > 0) {
+                statusText.className = "counter-online"; // Yeşile çevir
+                statusText.innerText = activeUsers + " Kişi Aktif";
+            } else {
+                statusText.className = "counter-offline"; // Kırmızıya çevir
+                statusText.innerText = "0 Kişi Aktif";
+            }
+        }
+
+        // Site açıldığında kontrolü başlat
+        window.onload = function() {
+            updateLiveCounter();
+            // Her 10 saniyede bir arkada aktifliği tazele
+            setInterval(updateLiveCounter, 10000);
+        };
     </script>
 </body>
 </html>

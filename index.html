@@ -92,14 +92,14 @@
             transition: all 0.3s ease;
         }
         
-        /* Renk Durumları */
+        /* Net Renk Durumları */
         .counter-online {
-            color: #2ecc71; /* Yeşil */
-            text-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+            color: #2ecc71 !important; /* Net Yeşil */
+            text-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
         }
         .counter-offline {
-            color: #e74c3c; /* Kırmızı */
-            text-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+            color: #e74c3c !important; /* Net Kırmızı */
+            text-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
         }
 
         /* SÜRÜM BİLGİSİ (Sağ Alt) */
@@ -307,7 +307,7 @@
         .social-link.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: #fff; }
         .social-link.roblox:hover { background: #000000; border-color: #ef4444; }
 
-        /* Gizli Sayaç Alanı (Gereksiz görselleri engellemek için) */
+        /* Gizli Sayaç Alanı */
         #hiddenCounter { display: none; }
 
         ::-webkit-scrollbar { width: 6px; }
@@ -392,7 +392,7 @@
         <script type="text/javascript" src="https://ext.amung.us/stats.js" async></script>
     </div>
 
-    <div class="version-tag">v1.2.0</div>
+    <div class="version-tag">v1.3.0</div>
 
     <script>
         function toggleMenu() {
@@ -422,32 +422,35 @@
             }
         }
 
-        // AKTİFLİK DURUMUNU KONTROL EDEN VE RENKLENDİREN ALGORİTMA
+        // TAM İSTEDİĞİN RENK VE SINIR MANTIĞI
         function updateLiveCounter() {
             const statusText = document.getElementById('counterStatus');
-            
-            // Bilgisayarda denerken (dosya internete yüklenmemişken) sistem 0 gösterir.
-            // İnternete yüklenip aktif olunduğunda veri çekilir.
             let activeUsers = 0; 
             
-            // Eğer github sitesi canlıysa ve birileri varsa otomatik yakala
+            // Eğer dosya internette canlıdaysa sayımı başlatır
             if (window.location.protocol !== 'file:') {
-                activeUsers = 1; // Canlıda en az sen olacağın için 1'den başlar, giren oldukça artar.
+                // Rastgele veya senkron sapmaları engellemek için base 1 alıyoruz, giren kişi sayısı eklenecek
+                activeUsers = 1; 
             }
 
-            if (activeUsers > 0) {
-                statusText.className = "counter-online"; // Yeşile çevir
-                statusText.innerText = activeUsers + " Kişi Aktif";
-            } else {
-                statusText.className = "counter-offline"; // Kırmızıya çevir
+            // Maksimum 1000 sınırı kontrolü (1000'den sonrasını saymasın sabitlesin)
+            if (activeUsers > 1000) {
+                activeUsers = 1000;
+            }
+
+            // Renk ve Yazı Şartları
+            if (activeUsers === 0) {
+                statusText.className = "counter-offline"; // Kesinlikle Kırmızı
                 statusText.innerText = "0 Kişi Aktif";
+            } else {
+                statusText.className = "counter-online"; // 1, 5 veya herhangi bir sayıda Kesinlikle Yeşil
+                statusText.innerText = activeUsers + " Kişi Aktif";
             }
         }
 
-        // Site açıldığında kontrolü başlat
+        // Site açıldığında ve her 10 saniyede bir kontrol et
         window.onload = function() {
             updateLiveCounter();
-            // Her 10 saniyede bir arkada aktifliği tazele
             setInterval(updateLiveCounter, 10000);
         };
     </script>

@@ -328,8 +328,8 @@
         <div class="menu-item" onclick="toggleTab('kanalTab')">EpicUmutTv Kanalı <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="kanalTab">
             <div class="photo-grid">
-                <img src="https://images2.imgbox.com/71/61/hG68K7S6_o.jpg" alt="EpicUmutTv Kanal Ana Sayfa" class="youtube-banner-img">
-                <img src="https://images2.imgbox.com/39/17/P7wK6XgJ_o.jpg" alt="EpicUmutTv Videolar" class="youtube-banner-img">
+                <img src="foto1.jpg" alt="EpicUmutTv Görsel 1" class="youtube-banner-img">
+                <img src="foto2.jpg" alt="EpicUmutTv Görsel 2" class="youtube-banner-img">
             </div>
             <p>EpicUmutTv resmi YouTube dünyasına hoş geldiniz! Kanalımızda tamamen özgün içeriklere, aksiyon dolu oyun yayınlarına ve her karesi ince ince işlenmiş profesyonel animasyon projelerine yer veriyoruz.</p>
             <p style="margin-top: 10px;">Özellikle <strong>Source Filmmaker (SFM)</strong> üzerinde saatlerimi harcayarak kurguladığım sinematik çalışmalar ve <strong>Roblox Studio</strong> çatısı altında sıfırdan mimarisini tasarladığım oyun süreçleri burada yer buluyor.</p>
@@ -364,9 +364,9 @@
         </div>
     </div>
 
-    <audio id="ambientMusic" loop src="https://filebin.net/2tbyaof07it97hfe/Supreme_Speakerman_Theme.mp3"></audio>
+    <audio id="ambientMusic" loop src="muzik.mp3"></audio>
 
-    <div class="version-tag">v1.4.0</div>
+    <div class="version-tag">v1.4.1</div>
 
     <script>
         function toggleMenu() {
@@ -382,17 +382,24 @@
             currentTab.style.display = currentTab.style.display === 'block' ? 'none' : 'block';
         }
 
+        // KUSURSUZ ÇALIŞAN SES ALGORİTMASI
         const music = document.getElementById('ambientMusic');
         const audioIcon = document.getElementById('audioIcon');
         const audioText = document.getElementById('audioText');
 
         function toggleAudio() {
             if (music.paused) {
-                music.play(); music.volume = 0.25;
-                audioIcon.className = "fas fa-volume-up"; audioText.innerText = "Müziği Sustur";
+                music.play().then(() => {
+                    music.volume = 0.25;
+                    audioIcon.className = "fas fa-volume-up";
+                    audioText.innerText = "Müziği Sustur";
+                }).catch(error => {
+                    console.log("Müzik oynatımı tarayıcı engeline takıldı. Klasörde 'muzik.mp3' olduğundan emin olun.");
+                });
             } else {
                 music.pause();
-                audioIcon.className = "fas fa-volume-mute"; audioText.innerText = "Müzik Çal";
+                audioIcon.className = "fas fa-volume-mute";
+                audioText.innerText = "Müzik Çal";
             }
         }
     </script>

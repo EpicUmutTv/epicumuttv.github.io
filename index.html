@@ -127,25 +127,74 @@
             padding: 80px 40px;
             gap: 30px;
         }
+        
+        /* GÜNCELLENEN GELİŞMİŞ SOL PANEL */
         .left-panel {
             flex: 1;
             border: 1px dashed rgba(186, 143, 255, 0.25);
             background: rgba(186, 143, 255, 0.02);
             border-radius: 16px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: #ba8fff;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(186, 143, 255, 0.3);
+            justify-content: space-between;
+            padding: 25px;
+            text-align: center;
             transition: all 0.3s ease;
+            overflow-y: auto;
         }
         .left-panel:hover {
             background: rgba(186, 143, 255, 0.04);
             border-color: #ba8fff;
         }
+
+        /* Oyun Tanıtım Bölümü */
+        .game-preview-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .game-preview-img {
+            width: 100%;
+            max-height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(186, 143, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .game-preview-img:hover {
+            transform: scale(1.02);
+            border-color: #ba8fff;
+        }
+        .game-desc {
+            font-size: 0.88rem;
+            color: #d1c5e3;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        .game-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 5px !important;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0) !important;
+            border: 1px solid rgba(186, 143, 255, 0.4) !important;
+        }
+        .game-btn:hover {
+            background: linear-gradient(135deg, #a044ff, #6a11cb) !important;
+            box-shadow: 0 0 15px rgba(142, 45, 226, 0.5) !important;
+        }
+        .coming-soon-text {
+            color: #ba8fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(186, 143, 255, 0.3);
+            margin-top: 15px;
+        }
+
         .center-panel {
             flex: 2;
             border: 1px dashed rgba(186, 143, 255, 0.15);
@@ -315,7 +364,15 @@
     </div>
 
     <div class="main-layout">
-        <div class="left-panel"><span>Çok yakında geliyor!</span></div>
+        <div class="left-panel">
+            <div class="game-preview-container">
+                <img src="oyun.jpg" alt="Skibidi Battle Oyun Önizleme" class="game-preview-img">
+                <p class="game-desc">Şu anda yapım aşamasında olan resmi bir oyunumuz bulunmaktadır. Geliştirme sürecini yakından görmek ve can sıkıntınızı keyifli bir şekilde gidermek için oyunumuzu hemen oynayabilirsiniz!</p>
+                <a href="SkibidiBattle.html" target="_blank" class="action-btn game-btn"><i class="fas fa-gamepad"></i> Oyuna Git</a>
+            </div>
+            <div class="coming-soon-text">Çok yakında geliyor!</div>
+        </div>
+        
         <div class="center-panel"><span>[Orta Kısım - İleride Ayarlanacak]</span></div>
     </div>
 
@@ -366,7 +423,7 @@
 
     <audio id="ambientMusic" loop src="muzik.mp3"></audio>
 
-    <div class="version-tag">v1.4.1</div>
+    <div class="version-tag">v1.5.0</div>
 
     <script>
         function toggleMenu() {
@@ -382,7 +439,6 @@
             currentTab.style.display = currentTab.style.display === 'block' ? 'none' : 'block';
         }
 
-        // KUSURSUZ ÇALIŞAN SES ALGORİTMASI
         const music = document.getElementById('ambientMusic');
         const audioIcon = document.getElementById('audioIcon');
         const audioText = document.getElementById('audioText');
@@ -394,7 +450,7 @@
                     audioIcon.className = "fas fa-volume-up";
                     audioText.innerText = "Müziği Sustur";
                 }).catch(error => {
-                    console.log("Müzik oynatımı tarayıcı engeline takıldı. Klasörde 'muzik.mp3' olduğundan emin olun.");
+                    console.log("Müzik oynatılamadı. Klasörde 'muzik.mp3' bulunduğundan emin olun.");
                 });
             } else {
                 music.pause();

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EpicUmutTv Official</title>
+    <!-- Google Fonts üzerinden modern ve temiz bir yazı tipi -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Sosyal medya ikonları için FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -128,7 +130,7 @@
             gap: 30px;
         }
         
-        /* GÜNCELLENEN GELİŞMİŞ SOL PANEL */
+        /* GELİŞMİŞ SOL PANEL */
         .left-panel {
             flex: 1;
             border: 1px dashed rgba(186, 143, 255, 0.25);
@@ -317,6 +319,43 @@
             border-color: #ba8fff;
         }
 
+        /* SÖZLEŞME ÖZEL STİLLERİ */
+        .sozlesme-title {
+            color: #ff5555;
+            text-shadow: 0 0 10px rgba(255, 85, 85, 0.4);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 85, 85, 0.2);
+            padding-bottom: 8px;
+        }
+        .sozlesme-desc {
+            font-size: 0.9rem;
+            color: #e2d7f3;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .sozlesme-img-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .sozlesme-img {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 85, 85, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .sozlesme-img:hover {
+            transform: scale(1.02);
+            border-color: #ff5555;
+            box-shadow: 0 4px 15px rgba(255, 85, 85, 0.3);
+        }
+
         .social-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -352,18 +391,22 @@
 </head>
 <body>
 
+    <!-- Yapımcı Bilgisi -->
     <div class="creator-credits">
         Sitenin yapımcısı <strong>EpicUmutTv</strong>'dir.<br>
         The creator of the site is <strong>EpicUmutTv</strong>.
     </div>
 
+    <!-- Üç Çizgi Menü -->
     <div class="burger-menu" onclick="toggleMenu()">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
 
+    <!-- Sitenin İskelet Panelleri -->
     <div class="main-layout">
+        <!-- Sol Kısım (Oyun Alanı) -->
         <div class="left-panel">
             <div class="game-preview-container">
                 <img src="oyun.jpg" alt="Skibidi Battle Oyun Önizleme" class="game-preview-img">
@@ -376,6 +419,7 @@
         <div class="center-panel"><span>[Orta Kısım - İleride Ayarlanacak]</span></div>
     </div>
 
+    <!-- Kategoriler Menüsü -->
     <div class="side-navigation" id="sideNav">
         <div class="menu-item" onclick="toggleTab('guncellemeTab')">Güncellemeler <i class="fas fa-chevron-down"></i></div>
         <div class="content-tab" id="guncellemeTab">
@@ -409,20 +453,39 @@
             </div>
         </div>
 
+        <!-- Güncellenen Sözleşmeler Kısmı -->
         <div class="menu-item" onclick="toggleTab('sozlesmeTab')">EpicUmutTv Sözleşmeleri <i class="fas fa-chevron-down"></i></div>
-        <div class="content-tab" id="sozlesmeTab"><p style="text-align: center; color: #ff7676;"><strong><em>Şuanlık Herhangi Bir Sözleşme İmzalanmadı</em></strong></p></div>
+        <div class="content-tab" id="sozlesmeTab">
+            <div class="sozlesme-title">KSA Studio X EpicUmutTv Sözleşmesi</div>
+            <p class="sozlesme-desc">
+                Bu yasal sözleşme, taraflar arasında meydana gelen <strong>küfür, hakaret ve karşılıklı zorbalık</strong> olaylarının ardından, sürecin yasal bir krize dönüşmesini önlemek amacıyla tarafların ortak iradesiyle imza altına alınmıştır. 
+            </p>
+            <p class="sozlesme-desc">
+                Olayın detaylı analizi yapıldığında, telif hakları ihlalleri ve şahsi değerlere yönelik yapılan uygunsuz ithamlar neticesinde <strong>her iki tarafın da haksız ve kusurlu olduğu</strong> sonucuna varılmıştır. Sürecin barışçıl bir şekilde çözülmesi adına; içeriklere yönelik haksız linç/telif işlemlerinin sonlandırılması ve kişisel verilerin korunması şartıyla bu resmi mutabakat sağlanmış ve konu tamamen kapatılmıştır.
+            </p>
+            
+            <!-- Sözleşme Kanıt Görselleri -->
+            <div class="sozlesme-img-container">
+                <img src="sozlesme1.png" alt="Sözleşme Maddeleri Bölüm 1" class="sozlesme-img">
+                <img src="sozlesme2.png" alt="Sözleşme Maddeleri Bölüm 2" class="sozlesme-img">
+                <img src="sozlesme3.png" alt="Sözleşme Onay Mesajları" class="sozlesme-img">
+            </div>
+        </div>
 
         <div class="menu-item coming-soon">Ve Devamı yakında... <i class="fas fa-lock"></i></div>
     </div>
 
+    <!-- SOL ALT PANEL -->
     <div class="bottom-left-controls">
         <div class="audio-control" onclick="toggleAudio()">
             <i class="fas fa-volume-mute" id="audioIcon"></i> <span id="audioText">Müzik Çal</span>
         </div>
     </div>
 
+    <!-- Müzik Çalar -->
     <audio id="ambientMusic" loop src="muzik.mp3"></audio>
 
+    <!-- Sürüm Bilgisi -->
     <div class="version-tag">v1.5.0</div>
 
     <script>
@@ -450,7 +513,7 @@
                     audioIcon.className = "fas fa-volume-up";
                     audioText.innerText = "Müziği Sustur";
                 }).catch(error => {
-                    console.log("Müzik oynatılamadı. Klasörde 'muzik.mp3' bulunduğundan emin olun.");
+                    console.log("Müzik oynatılamadı.");
                 });
             } else {
                 music.pause();
